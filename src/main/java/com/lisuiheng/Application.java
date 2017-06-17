@@ -39,11 +39,11 @@ public class Application {
 
         @Override
         public void run(String... strings) throws Exception {
-//            String classPath = System.getProperty("java.class.path") ;
-//            int lastIndex = classPath.lastIndexOf(File.separator);
-//            String backupDir = classPath.substring(0, lastIndex);
-            String backupDir = "/home/lee/workspace/java/test/dbtransport/target";
-                String backupPath = Paths.get(backupDir).resolve("alldb.sql").toString();
+            String classPath = System.getProperty("java.class.path") ;
+            int lastIndex = classPath.lastIndexOf(File.separator);
+            String backupDir = classPath.substring(0, lastIndex);
+//            String backupDir = "/home/lee/workspace/java/test/dbtransport/target";
+            String backupPath = Paths.get(backupDir).resolve("alldb.sql").toString();
             List<BackUp> list = config.getList();
             for (BackUp backUp : list) {
                 log.debug("alldb path is {}", backupPath);
