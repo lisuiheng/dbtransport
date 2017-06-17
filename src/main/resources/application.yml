@@ -1,0 +1,12 @@
+transport:
+  config:
+    list:
+      - source_host: 192.168.153.125
+        source_username: root
+        source_password: root
+        target_host: 192.168.153.8
+        target_username: root
+        target_password: root
+        dbs:
+          - 100_FrameManageSystem
+          - 101_ProjectManagePlatform
