@@ -12,6 +12,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -38,10 +39,12 @@ public class Application {
 
         @Override
         public void run(String... strings) throws Exception {
+            String classPath = System.getProperty("java.class.path") ;
+            int lastIndex = classPath.lastIndexOf(File.separator);
+            String backupDir = classPath.substring(0, lastIndex);
+                String backupPath = Paths.get(backupDir).resolve("alldb.sql").toString();
             List<BackUp> list = config.getList();
             for (BackUp backUp : list) {
-                String backupDir = System.getProperty("java.class.path") ;
-                String backupPath = Paths.get(backupDir).resolve("alldb.sql").toString();
                 log.debug("alldb path is {}", backupPath);
                 StringBuilder database = new StringBuilder();
                 for (String db : backUp.getDbs()) {
