@@ -1,4 +1,5 @@
 transport:
+  sql_path: /usr/local/javaweb/dbtransport
   config:
     list:
       - drop_database: true
