@@ -52,13 +52,17 @@ public class Application {
                 }
 
 
-
+                String dropDatabase = "";
+                if(backUp.dropDatabase) {
+                    dropDatabase = "--add-drop-database";
+                }
                 String fetchDataCommand = String
-                    .format("mysqldump --hex-blob -h%s -u%s -p%s --opt --databases %s --skip-lock-tables --result-file=%s",
+                    .format("mysqldump --hex-blob -h%s -u%s -p%s --opt --databases %s %s --skip-lock-tables --result-file=%s",
                         backUp.getSourceHost(),
                         backUp.getSourceUsername(),
                         backUp.getSourcePassword(),
                         database.toString(),
+                        dropDatabase,
                         backupPath
                 );
                 runCommand(fetchDataCommand);
@@ -101,13 +105,14 @@ public class Application {
 
     @Data
     public static class BackUp {
-        String sourceHost;
-        String sourceUsername;
-        String sourcePassword;
-        String targetHost;
-        String targetUsername;
-        String targetPassword;
-        String []dbs;
+        private boolean dropDatabase;
+        private String sourceHost;
+        private String sourceUsername;
+        private String sourcePassword;
+        private String targetHost;
+        private String targetUsername;
+        private String targetPassword;
+        private String []dbs;
     }
 
 }
