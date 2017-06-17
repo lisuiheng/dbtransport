@@ -70,7 +70,7 @@ public class Application {
         }
 
         private void runCommand(String command) throws IOException, InterruptedException {
-            log.info("run command {}",command);
+            log.info("run  command {}",command);
             Process p = Runtime.getRuntime().exec(new String[] {"/bin/sh", "-backUp",command});
 
 
