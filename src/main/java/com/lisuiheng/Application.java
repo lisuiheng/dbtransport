@@ -9,6 +9,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
@@ -21,6 +23,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+@EnableScheduling
 @EnableAutoConfiguration
 public class Application {
     private final Logger log = LoggerFactory.getLogger(Application.class);
@@ -30,15 +33,16 @@ public class Application {
     }
 
     @Component
-    public class DBTransport implements CommandLineRunner {
+    public class DBTransport {
         private final Config config;
 
         public DBTransport(Config config) {
             this.config = config;
         }
 
-        @Override
-        public void run(String... strings) throws Exception {
+        @Scheduled(cron="0 13 12 * * ?")
+        public void transport() throws Exception {
+            System.out.println("hello");
 //            String classPath = System.getProperty("java.class.path") ;
 //            int lastIndex = classPath.lastIndexOf(File.separator);
             String backupDir = config.sqlPath;
