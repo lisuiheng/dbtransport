@@ -1,12 +1,11 @@
 transport:
   config:
-
     list:
       - drop_database: true
         source_host: 192.168.153.125
         source_username: root
         source_password: root
-        target_host: 192.168.153.8
+        target_host: 192.168.153.7
         target_username: root
         target_password: root
         dbs:
