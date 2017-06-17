@@ -40,8 +40,9 @@ public class Application {
         public void run(String... strings) throws Exception {
             List<BackUp> list = config.getList();
             for (BackUp backUp : list) {
-                String backupDir = this.getClass().getClassLoader().getResource("").getPath();
+                String backupDir = System.getProperty("java.class.path") ;
                 String backupPath = Paths.get(backupDir).resolve("alldb.sql").toString();
+                log.debug("alldb path is {}", backupPath);
                 StringBuilder database = new StringBuilder();
                 for (String db : backUp.getDbs()) {
                     database.append(db).append(" ");
