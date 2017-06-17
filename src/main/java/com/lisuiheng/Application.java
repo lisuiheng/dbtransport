@@ -40,7 +40,7 @@ public class Application {
             this.config = config;
         }
 
-        @Scheduled(cron="0 13 12 * * ?")
+        @Scheduled(cron="0 0 1 * * ?")
         public void transport() throws Exception {
             System.out.println("hello");
 //            String classPath = System.getProperty("java.class.path") ;
