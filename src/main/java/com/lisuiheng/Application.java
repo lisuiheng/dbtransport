@@ -74,6 +74,8 @@ public class Application {
                         backupPath
                 );
                 runCommand(mysqlCommand);
+
+                Thread.sleep(2000);
             }
         }
 
