@@ -41,7 +41,7 @@ public class Application {
         }
 
 //        @Scheduled(cron="0 0 1 * * ?")
-        @Scheduled(cron="0 31 13 * * ?")
+        @Scheduled(cron="0 33 13 * * ?")
         public void transport() throws Exception {
 //            String classPath = System.getProperty("java.class.path") ;
 //            int lastIndex = classPath.lastIndexOf(File.separator);
