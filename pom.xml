@@ -69,23 +69,23 @@
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>kxcomm</id>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <url>
-                http://mavendev.kxcomm.com:8081/nexus/content/groups/kxcomm/
-            </url>
-        </repository>
-    </repositories>
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>kxcomm</id>-->
+            <!--<releases>-->
+                <!--<enabled>true</enabled>-->
+            <!--</releases>-->
+            <!--<url>-->
+                <!--http://mavendev.kxcomm.com:8081/nexus/content/groups/kxcomm/-->
+            <!--</url>-->
+        <!--</repository>-->
+    <!--</repositories>-->
 
-    <distributionManagement>
-        <repository>
-            <id>KxcommProject</id>
-            <name>KxcommProject</name>
-            <url>http://mavendev.kxcomm.com:8081/nexus/content/repositories/KxcommProject/</url>
-        </repository>
-    </distributionManagement>
+    <!--<distributionManagement>-->
+        <!--<repository>-->
+            <!--<id>KxcommProject</id>-->
+            <!--<name>KxcommProject</name>-->
+            <!--<url>http://mavendev.kxcomm.com:8081/nexus/content/repositories/KxcommProject/</url>-->
+        <!--</repository>-->
+    <!--</distributionManagement>-->
 </project>
