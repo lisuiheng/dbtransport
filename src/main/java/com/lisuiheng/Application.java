@@ -40,9 +40,9 @@ public class Application {
             this.config = config;
         }
 
-        @Scheduled(cron="0 0 1 * * ?")
+//        @Scheduled(cron="0 0 1 * * ?")
+        @Scheduled(cron="0 31 13 * * ?")
         public void transport() throws Exception {
-            System.out.println("hello");
 //            String classPath = System.getProperty("java.class.path") ;
 //            int lastIndex = classPath.lastIndexOf(File.separator);
             String backupDir = config.sqlPath;
@@ -62,8 +62,9 @@ public class Application {
                     dropDatabase = "--add-drop-database";
                 }
                 String fetchDataCommand = String
-                    .format("mysqldump --hex-blob -h%s -u%s -p%s --opt --databases %s %s --skip-lock-tables --result-file=%s",
+                    .format("mysqldump --hex-blob -h%s -P%s -u%s -p%s --opt --databases %s %s --skip-lock-tables --routines --result-file=%s",
                         backUp.getSourceHost(),
+                        backUp.getSourcePort(),
                         backUp.getSourceUsername(),
                         backUp.getSourcePassword(),
                         database.toString(),
@@ -72,8 +73,9 @@ public class Application {
                 );
                 runCommand(fetchDataCommand);
 
-                String mysqlCommand = String.format("mysql -h%s -u%s -p%s  < %s",
+                String mysqlCommand = String.format("mysql -h%s -P%s -u%s -p%s  < %s",
                         backUp.getTargetHost(),
+                        backUp.getTargetPort(),
                         backUp.getTargetUsername(),
                         backUp.getTargetPassword(),
                         backupPath
@@ -114,9 +116,11 @@ public class Application {
     public static class BackUp {
         private boolean dropDatabase;
         private String sourceHost;
+        private Integer sourcePort;
         private String sourceUsername;
         private String sourcePassword;
         private String targetHost;
+        private Integer targetPort;
         private String targetUsername;
         private String targetPassword;
         private String []dbs;

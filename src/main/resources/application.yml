@@ -1,14 +1,15 @@
 transport:
-  sql_path: /usr/local/javaweb/dbtransport
   config:
+    sql_path: /home/lee/Downloads/file/dbtransport
     list:
       - drop_database: true
         source_host: 192.168.153.125
+        source_port: 3306
         source_username: root
         source_password: root
-        target_host: 192.168.153.7
+        target_host: localhost
+        target_port: 3306
         target_username: root
         target_password: root
         dbs:
-          - 100_FrameManageSystem
-          - 101_ProjectManagePlatform
+          - 120_FunctionManageSystem
